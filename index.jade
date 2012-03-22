@@ -4,8 +4,12 @@ html
 		meta(charset = 'utf-8')
 		meta('http-equiv' = 'X-UA-Compatible', content = 'IE=edge,chrome=1')
 		title Basic Starter
-		link(rel = 'stylesheet', type = 'text/css', href = '../css/reset.css')
-		link(rel = 'stylesheet', type = 'text/css', href = 'css/main.css')
+		link(rel = 'stylesheet', type = 'text/css', href = '/css/reset.css')
+		link(rel = 'stylesheet', type = 'text/css', href = '/css/main.css')
+		script(src = 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js')
+		script(src = '/js/app.js')
+		//if lt IE 9
+			script(src = '//html5shiv.googlecode.com/svn/trunk/html5.js')
 	body
 		header
 		article
