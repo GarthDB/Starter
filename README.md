@@ -1,4 +1,17 @@
-##Starter
-Just a starter project for quick prototyping.
+# HTML Prototype Starter
 
-I use [Nettuts+ Structurer Pro](http://net.tutsplus.com/articles/news/structurer-pro-for-premium-members/) to get setup quicker and [CodeKit](http://incident57.com/codekit/) to compile on save.
+This is a starter project for building HTML/JS/CSS prototypes. I'm using my favorite stack, [Stylus](https://learnboost.github.io/stylus/), [Jade](http://jade-lang.com/), [CoffeeScript](http://coffeescript.org/), [Browsersync](http://www.browsersync.io/) and [NPM](https://www.npmjs.com) as a [build tool](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/).
+
+[Node](http://nodejs.org) is required.
+
+## Install Dependencies
+
+```
+npm install
+```
+
+## Run Build Script (with watch and Browsersync)
+
+```
+npm start
+```
