@@ -1,23 +1,43 @@
 {
   "name": "HTML-Prototype-Starter",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GarthDB/Starter.git"
+  },
   "scripts": {
-    "build:js": "coffee -c **/*.coffee",
-    "watch:js": "npm run build:js && watch -p '**/*.coffee' -c 'npm run build:js'",
-    "build:css": "stylus **/*.styl -o css",
-    "watch:css": "npm run build:css && watch -p '**/*.styl' -c 'npm run build:css'",
-    "build:html": "jade ./**",
-    "watch:html": "npm run build:html && watch -p '**/*.jade' -c 'npm run build:html'",
-    "browser-sync": "browser-sync start --files '**/*.js, **/*.html, **/*.css' --server ./",
-    "build:watch": "npm run watch:css & npm run watch:js & npm run watch:html & npm run browser-sync",
-    "build": "npm run build:js && npm run build:css && npm run build:html",
+    "watch:svg": "npm run build:svg && watch -p 'img/*.svg' -c 'npm run build:svg'",
+    "build:svg": "mkdir -p ./_site/img & svgo -f ./img -o _site/img",
+    "watch:js": "npm run build:js && watch -p 'js/**/*.js' -c 'npm run build:js'",
+    "build:js": "browserify -t [ babelify --presets [ env ] ] js/main.js -o ./_site/js/main.js",
+    "lint:js": "eslint js",
+    "build:css": "postcss css/main.css -o _site/css/main.css --use autoprefixer",
+    "watch:css": "npm run build:css && watch -p 'css/source.css' -c 'npm run build:css'",
+    "lint:css": "csslint css/source.css --ignore=compatible-vendor-prefixes,outline-none,box-sizing,fallback-colors,unqualified-attributes,regex-selectors,adjoining-classes",
+    "build:html": "pug index.pug -o _site/",
+    "watch:html": "npm run build:html && watch -p '**/*.pug' -c 'npm run build:html'",
+    "browser-sync": "browser-sync start --files '_site/js/main.js, _site/index.html, _site/css/*.css' --server ./_site/",
+    "build:watch": "npm run watch:css & npm run watch:js & npm run watch:html & npm run watch:svg & npm run browser-sync",
+    "lint": "npm run lint:css && npm run lint:js",
+    "build": "npm run build:js && npm run build:css && npm run build:html && npm run build:svg",
     "start": "npm run build:watch"
   },
   "devDependencies": {
-    "browser-sync": "^2.9.3",
-    "coffee-script": "^1.10.0",
-    "jade": "^1.11.0",
-    "stylus": "^0.52.4",
-    "watch-cli": "^0.2.1"
+    "autoprefixer": "^8.2.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babelify": "^8.0.0",
+    "browser-sync": "^2.23.6",
+    "browserify": "^16.1.1",
+    "csslint": "^1.0.5",
+    "eslint": "^4.19.1",
+    "postcss": "^6.0.21",
+    "postcss-cli": "^5.0.0",
+    "pug-cli": "^1.0.0-alpha6",
+    "svgo": "^1.0.5",
+    "text-extractify": "^0.1.0",
+    "watch-cli": "^0.2.3"
   }
 }
